@@ -9,12 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   NOSTALGIA IS A PORTAL — process diary
-   Palette + type from the exhibition posters.
-   Editorial two-column scaffold: margin rail (number/label)
-   + reading column. Human memory = serif; machine = mono.
-   ============================================================ */
+
 :root{
   --void:#140811; --wine:#1e0d1a; --panel:#0a0709;
   --portal:#9fe7be; --portal-dim:#79c39c;
@@ -236,6 +231,39 @@ main{display:block}
 .foot__title{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;color:var(--bone);letter-spacing:.02em;margin:0 0 .6rem}
 .foot p{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted);margin:.2rem 0}
 
+/* ---------- section placeholder figure ---------- */
+.figph{margin:1.6rem 0 0;max-width:42rem}
+.figph__ph{aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;border:1px solid var(--line);background:var(--panel)}
+.figph__n{font-family:var(--display);font-size:clamp(1.8rem,5vw,2.6rem);color:rgba(159,231,190,.2);line-height:1}
+.figph__t{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.figph img{width:100%;border:1px solid var(--line);display:block}
+.figph__cap{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin:.7rem 0 0;line-height:1.5}
+.figph__cap.is-placeholder{color:var(--portal-dim);opacity:.75}
+
+/* ---------- screenshots ---------- */
+.shot{margin:1.1rem 0 0;max-width:46rem}
+.shot img{width:100%;border:1px solid var(--line);display:block;background:var(--panel)}
+.shot figcaption{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);margin:.6rem 0 0;line-height:1.5}
+
+/* ---------- galleries (Inszenierung) ---------- */
+.gallery{display:grid;gap:1rem;margin:1.1rem 0 0;align-items:start}
+.gallery.g2{grid-template-columns:repeat(2,1fr)}
+.gallery.g3{grid-template-columns:repeat(3,1fr)}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;border:1px solid var(--line);display:block;background:var(--panel)}
+.gallery figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;color:var(--muted);margin:.5rem 0 0;line-height:1.5}
+@media(max-width:640px){.gallery.g2,.gallery.g3{grid-template-columns:1fr}}
+
+/* ---------- prompts carousel (text cards) ---------- */
+.pslide{flex:0 0 100%;min-width:0;padding:1.3rem 1.4rem;background:var(--panel);display:flex;flex-direction:column;gap:.9rem}
+.pslide .ptheme{font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--portal)}
+.pslide .prow{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;align-items:start}
+.pslide .plabel{font-family:var(--mono);font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--portal-dim);padding-top:.15rem}
+.pslide .prow p{margin:0;font-family:var(--mono);font-size:.82rem;line-height:1.55;color:var(--body)}
+@media(max-width:520px){.pslide .prow{grid-template-columns:1fr;gap:.2rem}}
+.prompts-note{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);margin:.9rem 0 0}
+.prompts-note code{color:var(--portal);background:rgba(159,231,190,.06);padding:.1rem .35rem;border:1px solid var(--line)}
+
 /* ---------- reveal (JS-progressive, no-JS safe) ---------- */
 .reveal{opacity:1}
 html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
@@ -334,6 +362,10 @@ html.js .reveal.vis{opacity:1;transform:none}
           <div class="strand"><h3>In der nationalen Identit&auml;t</h3><p>Grenzzonen, Menschen zwischen zwei Kulturen. Politisch und emotional stark aufgeladen &mdash; wirkungsvoll, aber konzeptuell anspruchsvoll zu navigieren.</p></div>
           <div class="strand"><h3>Auf spiritueller Ebene</h3><p>&Uuml;berg&auml;nge zwischen Leben und Tod, Wachen und Schlaf, Ritual als Schwellenmoment. Archetypisch, sinnlich umsetzbar &uuml;ber Atmosph&auml;re, Klang und Licht &mdash; und f&uuml;r Galeriebesucher unmittelbar zug&auml;nglich.</p></div>
         </div>
+        <figure class="figph" data-fig="themenfindung">
+          <div class="figph__ph"><span class="figph__n">Bild</span><span class="figph__t">hier einf&uuml;gen</span></div>
+          <figcaption class="figph__cap">Satz zum Bild hier schreiben.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -369,6 +401,10 @@ html.js .reveal.vis{opacity:1;transform:none}
           <li>Alice in Wonderland</li>
           <li>Eros + Massacre (1969) &mdash; Yoshishige Yoshida</li>
         </ul>
+        <figure class="figph" data-fig="brainstorming">
+          <div class="figph__ph"><span class="figph__n">Bild</span><span class="figph__t">hier einf&uuml;gen</span></div>
+          <figcaption class="figph__cap">Satz zum Bild hier schreiben.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -382,6 +418,10 @@ html.js .reveal.vis{opacity:1;transform:none}
           <p><strong>Die entscheidende Verschiebung.</strong> Zun&auml;chst lag der st&auml;rkste emotionale Kern in der nationalen Nostalgie. In der Auseinandersetzung wurde jedoch eine bewusste Entscheidung getroffen: Der pers&ouml;nliche Bezug wird zugunsten eines allgemeinen Statements &uuml;ber die Vergangenheit losgelassen. Das Thema verschiebt sich von der individuellen Herkunft hin zu einem kollektiven, zeitgen&ouml;ssischen Zustand.</p>
           <p>Damit war auch klar: Die Nostalgie sollte nicht als Privatgeschichte erz&auml;hlt werden, sondern als <em>Mechanismus</em> &mdash; das Romantisieren und Verdr&auml;ngen, das uns alle betrifft.</p>
         </div>
+        <figure class="figph" data-fig="zuspitzung">
+          <div class="figph__ph"><span class="figph__n">Bild</span><span class="figph__t">hier einf&uuml;gen</span></div>
+          <figcaption class="figph__cap">Satz zum Bild hier schreiben.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -400,6 +440,10 @@ html.js .reveal.vis{opacity:1;transform:none}
           <p><strong>Thematischer Strang.</strong> Ausgehend von der Darstellung Kleopatras soll symbolisiert werden, wie das Annehmen und Akzeptieren dieser Situationen zun&auml;chst zu Chaos f&uuml;hrt &mdash; ein Chaos, das man jedoch loslassen muss, um Struktur zu gewinnen. Es soll gezeigt werden, dass man Unsicherheiten wertsch&auml;tzen und Geduld lernen kann. So soll wieder Licht hereingelassen werden, das einem den Weg zeigt.</p>
           <p>Entgegengesetzt dient die Geschichte von Alice im Wunderland im Hintergrund als romantisierte, kindliche Version desselben Konflikts. W&auml;hrend die Konflikte in Kleopatra angenommen werden und aktiv an einer Ver&auml;nderung gearbeitet wird, werden sie in Alice im Wunderland verdr&auml;ngt und in den Hintergrund gezogen. So entsteht eine romantisierte Version der Wirklichkeit.</p>
         </div>
+        <figure class="figph" data-fig="kernkonzept">
+          <div class="figph__ph"><span class="figph__n">Bild</span><span class="figph__t">hier einf&uuml;gen</span></div>
+          <figcaption class="figph__cap">Satz zum Bild hier schreiben.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -489,36 +533,127 @@ html.js .reveal.vis{opacity:1;transform:none}
     <section class="sec reveal" id="technik">
       <aside class="sec__aside"><span class="sec__num">08</span><span class="eyebrow">Technische Umsetzung</span></aside>
       <div class="sec__main">
-        <h2 class="sec__title">Verwendete Hard- &amp; Software</h2>
-        <div class="prose"><p>Die Installation koppelt kamerabasiertes Tracking an eine Echtzeit-Pipeline: Bewegung wird erfasst, live zu Bild und Text verarbeitet und &uuml;ber alte Bildschirme ausgegeben.</p></div>
-        <div class="cols2" style="margin-top:1.5rem">
+        <h2 class="sec__title">Zwei Projekte, zwei Fernseher</h2>
+        <div class="prose">
+          <p>Das Thema wird &uuml;ber zwei eigenst&auml;ndige TouchDesigner-Projekte umgesetzt, die auf zwei verschiedene Fernseher gestreamt werden. F&uuml;r die Ausstellung &bdquo;Liminalit&auml;t&ldquo; in Zusammenarbeit mit der St&auml;dtischen Galerie stehen die beiden Ausspielger&auml;te jeweils vor dem Ausgang eines Aufzugs.</p>
+        </div>
+        <div class="cols2" style="margin-top:1.4rem">
+          <div>
+            <p class="subhead" style="margin-top:0">Erdgeschoss &middot; Fernseher 1</p>
+            <div class="prose"><p>Zwei Videoebenen stellen das Verh&auml;ltnis zwischen Erinnerung und Romantisierung dar.</p></div>
+          </div>
+          <div>
+            <p class="subhead" style="margin-top:0">1. Obergeschoss &middot; Fernseher 2</p>
+            <div class="prose"><p>Nach dem Aufzug folgt ein Text, gesteuert durch Handbewegungen: Erinnerungen sind oft nur romantisierte Versionen der Vergangenheit &mdash; man redet sie sich sch&ouml;n, um zu verdr&auml;ngen, woran man sich nicht erinnern m&ouml;chte. Hier soll die Dualit&auml;t erst richtig verstanden und getragen werden.</p></div>
+          </div>
+        </div>
+
+        <div class="cols2" style="margin-top:1.6rem">
           <div>
             <p class="subhead" style="margin-top:0">Hardware</p>
             <ul class="deflist">
               <li><span class="k">Kamera</span><span class="v">Erfasst Position im Raum bzw. Handbewegung als Eingabe.</span></li>
-              <li><span class="k">Alte Fernsehger&auml;te</span><span class="v">CRT-Displays als bewusst gew&auml;hlte Ausgabe &mdash; Teil der nostalgischen Bildsprache.</span></li>
-              <li><span class="k">Rechner</span><span class="v">Echtzeit-Verarbeitung des Trackings und der Bildebenen.</span></li>
-              <li><span class="k">Sensorik</span><span class="v">Aus fr&uuml;her Iteration: PIR- bzw. Ultraschallsensor (HC-SR04), enger Erfassungswinkel.</span></li>
+              <li><span class="k">Zwei alte Fernsehger&auml;te</span><span class="v">CRT-Displays als Ausgabe, je vor einem Aufzugsausgang platziert &mdash; Teil der nostalgischen Bildsprache.</span></li>
+              <li><span class="k">Rechner</span><span class="v">Echtzeit-Verarbeitung der beiden TouchDesigner-Projekte.</span></li>
             </ul>
           </div>
           <div>
             <p class="subhead" style="margin-top:0">Software</p>
             <ul class="deflist">
-              <li><span class="k">TouchDesigner</span><span class="v">Auswertung des Trackings, Echtzeit-Bild, Glitch / Distortion und Texteinblendung.</span></li>
-              <li><span class="k">Stable Diffusion</span><span class="v">Generative Bildebenen f&uuml;r Vorder- und Hintergrund.</span></li>
-              <li><span class="k">POPS</span><span class="v">Partikelsystem in TouchDesigner f&uuml;r die flie&szlig;enden St&ouml;reffekte.</span></li>
+              <li><span class="k">TouchDesigner</span><span class="v">Zwei Projekte: Auswertung des Trackings, Echtzeit-Bild, Videoebenen, Glitch / Distortion und die textbasierte Interaktion.</span></li>
             </ul>
           </div>
         </div>
         <p class="subhead">Pipeline</p>
-        <div class="flow"><b>Input &middot; Tracking</b><i>&rarr;</i><b>Verarbeitung &middot; Bildebenen &amp; Glitch</b><i>&rarr;</i><b>Output &middot; CRT / Audio</b></div>
-        <div class="prose"><p>Die Distortion reagiert auf Verweildauer und Position der Besucher:innen &mdash; je nach Steuerungsebene verschiebt sich das Verh&auml;ltnis von Vorder- und Hintergrund oder tritt der Text Wort f&uuml;r Wort hervor.</p></div>
+        <div class="flow"><b>Input &middot; Tracking</b><i>&rarr;</i><b>Verarbeitung &middot; zwei TD-Projekte</b><i>&rarr;</i><b>Ausgabe &middot; zwei Fernseher</b></div>
+        <div class="prose"><p>Die Ausgabe reagiert in Echtzeit auf Position bzw. Handbewegung der Besucher:innen &mdash; je nach Fernseher verschiebt sich das Verh&auml;ltnis der Videoebenen oder tritt der Text Wort f&uuml;r Wort hervor.</p></div>
       </div>
     </section>
 
     <!-- 09 -->
+    <section class="sec reveal" id="projekte">
+      <aside class="sec__aside"><span class="sec__num">09</span><span class="eyebrow">Projekte</span></aside>
+      <div class="sec__main">
+        <h2 class="sec__title">Die Projekte in TouchDesigner</h2>
+        <div class="prose"><p>Beide Installationen entstehen in TouchDesigner. Kameratracking steuert in Echtzeit, was auf dem jeweiligen Fernseher zu sehen ist.</p></div>
+
+        <p class="subhead">Fernseher 1 &middot; Erdgeschoss &mdash; Videointeraktion</p>
+        <div class="prose"><p>Zwei Videoebenen bilden das Verh&auml;ltnis von Erinnerung und Romantisierung ab; Position und Bewegung der Besucher:innen verschieben ihr Zusammenspiel.</p></div>
+        <figure class="shot">
+          <img src="assets/images/td-video-01.jpg" alt="TouchDesigner-Projekt Fernseher 1, Videointeraktion &mdash; Node-Netzwerk mit zwei Videoebenen." loading="lazy">
+          <figcaption>TD-Projekt &bdquo;Fernseher 01 &middot; VideoInteraktion&ldquo; &mdash; Videoebenen &amp; Distortion.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/images/td-video-02.jpg" alt="TouchDesigner-Projekt Fernseher 1, Videointeraktion &mdash; zweite Ansicht des Node-Netzwerks." loading="lazy">
+          <figcaption>Dasselbe Projekt in einem sp&auml;teren Frame &mdash; das Zusammenspiel der Ebenen.</figcaption>
+        </figure>
+
+        <p class="subhead">Fernseher 2 &middot; 1. Obergeschoss &mdash; Textinteraktion</p>
+        <div class="prose"><p>Handbewegungen lassen den Text erscheinen und wieder verschwinden. Er macht die romantisierte Erinnerung und ihre Verdr&auml;ngung bewusst &mdash; die Dualit&auml;t wird hier getragen.</p></div>
+        <figure class="shot">
+          <img src="assets/images/td-text.jpg" alt="TouchDesigner-Projekt Fernseher 2, Textinteraktion &mdash; Node-Netzwerk mit Hand-Tracking." loading="lazy">
+          <figcaption>TD-Projekt &bdquo;Fernseher 02 &middot; TextInteraktion&ldquo; &mdash; Hand-Tracking steuert den Text.</figcaption>
+        </figure>
+
+        <p class="subhead">Bildmaterial: von der KI-Idee zu Archive.org</p>
+        <div class="prose"><p>Urspr&uuml;nglich sollte die nostalgische Stimmung mit KI-generierten Videos erzeugt werden. Aus Kostengr&uuml;nden wurde diese Idee verworfen; stattdessen wurde zun&auml;chst auf gemeinfreies Material von Archive.org zur&uuml;ckgegriffen. Die daf&uuml;r vorbereiteten Prompts:</p></div>
+        <div class="carousel" id="pcarousel" role="group" aria-roledescription="Karussell" aria-label="Vorbereitete Prompts">
+          <div class="carousel__stage">
+            <button class="carousel__nav prev" type="button" aria-label="Vorheriger Prompt">&lsaquo;</button>
+            <div class="carousel__viewport"><div class="carousel__track" id="ptrack"></div></div>
+            <button class="carousel__nav next" type="button" aria-label="N&auml;chster Prompt">&rsaquo;</button>
+          </div>
+          <div class="carousel__bar">
+            <div class="carousel__dots" id="pdots"></div>
+            <div class="carousel__count" id="pcount">01&nbsp;/&nbsp;14</div>
+          </div>
+        </div>
+        <p class="prompts-note">Einstellungen (Midjourney): <code>--ar 4:3 --style raw --v 6</code></p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="sec reveal" id="inszenierung">
+      <aside class="sec__aside"><span class="sec__num">10</span><span class="eyebrow">Inszenierung</span></aside>
+      <div class="sec__main">
+        <h2 class="sec__title">Design &amp; Aufbau</h2>
+        <div class="prose"><p>Von der visuellen Sprache der Plakate bis zur Platzierung im Raum wurde die Inszenierung Schritt f&uuml;r Schritt entwickelt.</p></div>
+
+        <p class="subhead">Design-Inspiration</p>
+        <div class="prose"><p>Beim Design der Projekt- und Steuerungsplakate haben wir uns am Look von <em>Sonic Battle 2</em> orientiert &mdash; hoher Kontrast, kr&auml;ftige Typografie und grafische Schwarz-Wei&szlig;-Fl&auml;chen.</p></div>
+        <div class="gallery g2">
+          <figure><img src="assets/images/sonic-01.jpg" alt="Design-Referenz Sonic Battle 2." loading="lazy"><figcaption>Sonic Battle 2 &mdash; Design-Referenz.</figcaption></figure>
+          <figure><img src="assets/images/sonic-02.jpg" alt="Design-Referenz Sonic Battle 2." loading="lazy"><figcaption>Sonic Battle 2 &mdash; Design-Referenz.</figcaption></figure>
+        </div>
+
+        <p class="subhead">Raumskizzen</p>
+        <div class="prose"><p>Erste Skizzen zur Platzierung der Displays und zum Weg der Besucher:innen durch den Raum.</p></div>
+        <div class="gallery g3">
+          <figure><img src="assets/images/skizze-01.jpg" alt="Raumskizze." loading="lazy"></figure>
+          <figure><img src="assets/images/skizze-02.jpg" alt="Raumskizze, Grundriss mit Weg." loading="lazy"></figure>
+          <figure><img src="assets/images/skizze-03.jpg" alt="Raumskizze." loading="lazy"></figure>
+        </div>
+
+        <p class="subhead">Erste Aufbau-Tests</p>
+        <div class="prose"><p>Erste Tests des Aufbaus mit verschiedenen Displays.</p></div>
+        <div class="gallery g2">
+          <figure><img src="assets/images/aufbau-01.jpg" alt="Aufbautest mit verschiedenen Displays." loading="lazy"></figure>
+          <figure><img src="assets/images/aufbau-02.jpg" alt="Aufbautest mit verschiedenen Displays." loading="lazy"></figure>
+        </div>
+
+        <p class="subhead">Finales Design</p>
+        <div class="prose"><p>Die finalen Plakate: das Titelplakat und die beiden Steuerungsplakate.</p></div>
+        <div class="gallery g3">
+          <figure><img src="assets/images/poster-hero.jpg" alt="Finales Titelplakat Nostalgia is a Portal." loading="lazy"><figcaption>Titelplakat</figcaption></figure>
+          <figure><img src="assets/images/steuerung-position.jpg" alt="Finales Steuerungsplakat Position." loading="lazy"><figcaption>Steuerung &middot; Position</figcaption></figure>
+          <figure><img src="assets/images/steuerung-hand.jpg" alt="Finales Steuerungsplakat Handbewegung." loading="lazy"><figcaption>Steuerung &middot; Handbewegung</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 -->
     <section class="sec reveal" id="reflexion">
-      <aside class="sec__aside"><span class="sec__num">09</span><span class="eyebrow">Reflexion</span></aside>
+      <aside class="sec__aside"><span class="sec__num">11</span><span class="eyebrow">Reflexion</span></aside>
       <div class="sec__main">
         <h2 class="sec__title">Was wir mitnehmen</h2>
         <div class="prose"><p>R&uuml;ckblickend liegt die wichtigste Erkenntnis im Timing: Der erste ernsthafte Test mit echten Nutzer:innen kam sp&auml;t. Vieles, was sich erst im Ausprobieren zeigt, h&auml;tte den Prototyp fr&uuml;her formen k&ouml;nnen.</p></div>
@@ -535,9 +670,9 @@ html.js .reveal.vis{opacity:1;transform:none}
       </div>
     </section>
 
-    <!-- 10 -->
+    <!-- 12 -->
     <section class="sec reveal" id="bildstrecke">
-      <aside class="sec__aside"><span class="sec__num">10</span><span class="eyebrow">Bildstrecke</span></aside>
+      <aside class="sec__aside"><span class="sec__num">12</span><span class="eyebrow">Bildstrecke</span></aside>
       <div class="sec__main">
         <h2 class="sec__title">Das Projekt in Bildern</h2>
         <div class="prose"><p>F&uuml;nf bis sieben bewusst gew&auml;hlte Aufnahmen, die die Installation und ihre Nutzung stellvertretend zeigen.</p></div>
@@ -556,23 +691,6 @@ html.js .reveal.vis{opacity:1;transform:none}
       </div>
     </section>
 
-    <!-- 11 -->
-    <section class="sec reveal" id="casefilm">
-      <aside class="sec__aside"><span class="sec__num">11</span><span class="eyebrow">Case Film</span></aside>
-      <div class="sec__main">
-        <h2 class="sec__title">Audiovisuelle Dokumentation</h2>
-        <div class="prose"><p>Der Case Film f&uuml;hrt durch das Projekt und beantwortet vier Fragen:</p></div>
-        <ul class="wwww">
-          <li><b>Wo?</b><span>Kontext &amp; Ort</span></li>
-          <li><b>Was?</b><span>Die Installation</span></li>
-          <li><b>Wie?</b><span>Interaktion &amp; Technik</span></li>
-          <li><b>Wow?</b><span>Der Moment</span></li>
-        </ul>
-        <a class="filmbtn disabled" id="filmbtn" href="#"><span aria-hidden="true">&#9654;</span>&nbsp;<span class="filmbtn__label">Zur audiovisuellen Dokumentation</span></a>
-        <p class="filmnote" id="filmnote">GitHub-Pfad hier hinterlegen.</p>
-      </div>
-    </section>
-
   </main>
 </div>
 
@@ -586,14 +704,16 @@ html.js .reveal.vis{opacity:1;transform:none}
 /* ============================================================================
    KONFIGURATION  —  Nur diesen Block bearbeiten.
    ============================================================================
-   1) FOTOS: Bilddatei nach  assets/images/  legen und Pfad eintragen, z. B.
+   1) FOTOS (Bildstrecke): Bilddatei nach  assets/images/  legen und Pfad eintragen:
       { src: "assets/images/foto-01.jpg", caption: "Aufbau in der Galerie" }
       Leeres "src" = Platzhalter. 5–7 Bilder empfohlen.
-   2) CASE FILM: GitHub-Pfad bei caseFilmUrl eintragen.
+   2) EINZELBILDER (Themenfindung/Brainstorming/Zuspitzung/Kernkonzept):
+      pro Abschnitt Pfad eintragen und den Satz darunter bei "caption".
    3) LOOP-VIDEO: Datei einfach als  assets/video/hero-loop.mp4  ablegen
       (kein Eintrag nötig — wird automatisch abgespielt).
    ========================================================================== */
 const CONFIG = {
+  // 1) Bildstrecke (unten): Pfad + optionale Bildunterschrift
   photos: [
     { src: "", caption: "" },   // Bild 1  ->  z. B. "assets/images/foto-01.jpg"
     { src: "", caption: "" },   // Bild 2
@@ -602,55 +722,111 @@ const CONFIG = {
     { src: "", caption: "" },   // Bild 5
     { src: "", caption: "" }    // Bild 6  (weitere Zeilen möglich – bis 7)
   ],
-  caseFilmUrl:   "case-film.html",   // eigene Case-Film-Seite im selben Ordner. Oder externe URL (Vimeo/YouTube) eintragen.
-  caseFilmLabel: "Zur audiovisuellen Dokumentation"
+  // 2) Einzelbild + Satz je Abschnitt
+  figures: {
+    themenfindung: { src: "", caption: "" },
+    brainstorming: { src: "", caption: "" },
+    zuspitzung:    { src: "", caption: "" },
+    kernkonzept:   { src: "", caption: "" }
+  }
 };
+
+/* Vorbereitete Prompts (Bildstrecke „von der KI-Idee zu Archive.org“) */
+const PROMPTS = [
+  { theme:"Alte Cartoons", mj:"CRT television in a dim living room, saturday morning cartoons playing, warm glow, worn carpet, 1990s interior, film grain, super 8", runway:"Static shot, TV flickers slightly, light from screen moves on carpet" },
+  { theme:"Rasenm\u00E4her / feuchtes Gras", mj:"dewy suburban backyard, early morning, lawn mower tracks in wet grass, golden hour mist, no people, nostalgic, kodachrome", runway:"Slow pan across wet grass, light catching dew drops" },
+  { theme:"Altes Radio / Classic Rock", mj:"old portable transistor radio on a porch railing, summer afternoon, peeling paint, warm light, 1980s suburban, film grain", runway:"Gentle zoom out, wind moves slightly in background" },
+  { theme:"Grill", mj:"charcoal grill smoking in a backyard at dusk, suburban neighborhood, warm orange light, no faces, nostalgic summer evening", runway:"Smoke drifts upward slowly, static camera" },
+  { theme:"SNES / N64 / PS2", mj:"close up of child hands holding SNES controller, dim basement, TV glow, carpet floor, 1990s, super 8 film look", runway:"Subtle flicker of TV light on hands, no movement otherwise" },
+  { theme:"Fahrrad / Inliner / Skateboard / Basketball", mj:"empty suburban driveway, basketball hoop, bicycle leaning against garage, late afternoon shadows, golden hour, no people, kodachrome 1990s", runway:"Very slow drift forward toward the hoop, warm haze" },
+  { theme:"Veranda bei D\u00E4mmerung", mj:"family porch at dusk, citronella candles, plastic garden chairs, large table, warm golden light, suburban 1990s, no faces visible, film grain", runway:"Candle light flickers, very slow zoom out" },
+  { theme:"Erster Schultag", mj:"new sneakers and jeans on a doorstep, morning light, backpack visible, suburban front door, kodachrome, nostalgic, no faces", runway:"Static shot, morning light shifts slightly" },
+  { theme:"Kochen", mj:"close up of weathered hands stirring a pot on a gas stove, warm kitchen light, steam rising, 1990s kitchen interior, kodachrome, film grain, no faces", runway:"Slow zoom in on hands, steam drifts upward, light flickers from stove" },
+  { theme:"Falten / W\u00E4sche", mj:"close up of hands folding laundry on a bed, warm afternoon light through curtains, floral bedsheets, suburban bedroom, super 8 film look", runway:"Static shot, curtain moves slightly in breeze, soft light shift" },
+  { theme:"Gartenschlauch", mj:"close up of hands holding a garden hose, water spraying on green lawn, summer afternoon, bare feet visible on wet grass, kodachrome 1990s", runway:"Water catches light, very slow pan up along hose to hands" },
+  { theme:"Schreiben / Brief", mj:"close up of hands writing on lined paper, wooden kitchen table, morning light, coffee cup beside it, 1980s domestic interior, film grain", runway:"Pen moves slowly, light from window shifts subtly" },
+  { theme:"Backen", mj:"close up of hands kneading dough on a flour-dusted counter, warm kitchen, morning light, 1990s suburban home, kodachrome, nostalgic", runway:"Gentle rhythm of hands, dust particles float in light" },
+  { theme:"Staubsauger", mj:"close up of hands gripping a vintage vacuum cleaner handle, worn carpet, morning light through blinds, 1980s living room, super 8 film grain", runway:"Slow pull back, stripes of light and shadow from blinds" }
+];
 /* ===================== ab hier nichts mehr ändern ========================== */
 
-/* Foto-Karussell */
-(function(){
-  var track=document.getElementById('track'); if(!track) return;
-  var dotsC=document.getElementById('dots'), countEl=document.getElementById('count'),
-      capEl=document.getElementById('cap'), car=document.getElementById('carousel');
-  var data=(CONFIG.photos&&CONFIG.photos.length)?CONFIG.photos:[{src:'',caption:''}];
-  var n=data.length, i=0;
+/* Wiederverwendbares Karussell (Fotos + Prompts) */
+function makeCarousel(o){
+  var track=document.getElementById(o.track); if(!track) return;
+  var car=document.getElementById(o.car), dotsC=document.getElementById(o.dots), countEl=document.getElementById(o.count);
+  var items=o.items, n=items.length, i=0;
   function pad(x){return String(x).length<2?('0'+x):(''+x);}
-  data.forEach(function(s,idx){
-    var slide=document.createElement('div'); slide.className='slide';
-    slide.setAttribute('role','group'); slide.setAttribute('aria-label','Bild '+(idx+1)+' von '+n);
-    if(s.src){ var img=document.createElement('img'); img.src=s.src; img.alt=s.caption||('Projektfoto '+(idx+1)); img.loading='lazy'; slide.appendChild(img); }
-    else { slide.classList.add('ph'); slide.innerHTML='<span class="phn">'+pad(idx+1)+'</span><span class="pht">Bild hier einf\u00FCgen</span>'; }
-    track.appendChild(slide);
+  items.forEach(function(it,idx){
+    track.appendChild(o.build(it,idx,n));
     var dot=document.createElement('button'); dot.type='button'; dot.className='dot'+(idx===0?' on':'');
-    dot.setAttribute('aria-label','Zu Bild '+(idx+1)); dot.addEventListener('click',function(){go(idx);}); dotsC.appendChild(dot);
+    dot.setAttribute('aria-label','Zu '+(idx+1)); dot.addEventListener('click',function(){go(idx);}); dotsC.appendChild(dot);
   });
   function render(){
     track.style.transform='translateX(-'+(i*100)+'%)';
     var k=dotsC.children; for(var j=0;j<k.length;j++){k[j].classList.toggle('on',j===i);}
     if(countEl) countEl.innerHTML=pad(i+1)+'&nbsp;/&nbsp;'+pad(n);
-    if(capEl) capEl.textContent=(data[i].caption)||'';
+    if(o.oncap) o.oncap(items[i]);
   }
   function go(x){ i=((x%n)+n)%n; render(); }
-  var pv=document.querySelector('.carousel__nav.prev'), nx=document.querySelector('.carousel__nav.next');
-  if(pv) pv.addEventListener('click',function(){go(i-1);});
-  if(nx) nx.addEventListener('click',function(){go(i+1);});
-  if(car){ car.setAttribute('tabindex','0');
+  if(car){
+    var pv=car.querySelector('.carousel__nav.prev'), nx=car.querySelector('.carousel__nav.next');
+    if(pv) pv.addEventListener('click',function(){go(i-1);});
+    if(nx) nx.addEventListener('click',function(){go(i+1);});
+    car.setAttribute('tabindex','0');
     car.addEventListener('keydown',function(e){ if(e.key==='ArrowLeft'){go(i-1);} else if(e.key==='ArrowRight'){go(i+1);} });
     var x0=null;
     car.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
     car.addEventListener('touchend',function(e){ if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){go(dx<0?i+1:i-1);} x0=null; });
   }
   render();
+}
+
+/* Foto-Karussell (Bildstrecke) */
+(function(){
+  var photos=(CONFIG.photos&&CONFIG.photos.length)?CONFIG.photos:[{src:'',caption:''}];
+  function pad(x){return String(x).length<2?('0'+x):(''+x);}
+  makeCarousel({
+    car:'carousel', track:'track', dots:'dots', count:'count', items:photos,
+    build:function(s,idx,n){
+      var slide=document.createElement('div'); slide.className='slide';
+      slide.setAttribute('role','group'); slide.setAttribute('aria-label','Bild '+(idx+1)+' von '+n);
+      if(s.src){ var img=document.createElement('img'); img.src=s.src; img.alt=s.caption||('Projektfoto '+(idx+1)); img.loading='lazy'; slide.appendChild(img); }
+      else { slide.classList.add('ph'); slide.innerHTML='<span class="phn">'+pad(idx+1)+'</span><span class="pht">Bild hier einf\u00FCgen</span>'; }
+      return slide;
+    },
+    oncap:function(s){ var cap=document.getElementById('cap'); if(cap) cap.textContent=(s.caption)||''; }
+  });
 })();
 
-/* Case Film Link */
+/* Prompt-Karussell (Textkarten) */
 (function(){
-  var btn=document.getElementById('filmbtn'), note=document.getElementById('filmnote'); if(!btn) return;
-  var label=btn.querySelector('.filmbtn__label');
-  if(label && CONFIG.caseFilmLabel) label.textContent=CONFIG.caseFilmLabel;
-  var url=(CONFIG.caseFilmUrl||'').trim();
-  if(url){ btn.href=url; btn.classList.remove('disabled'); btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener'); btn.removeAttribute('aria-disabled'); if(note) note.textContent=url; }
-  else { btn.classList.add('disabled'); btn.href='#'; btn.setAttribute('aria-disabled','true'); if(note) note.textContent='GitHub-Pfad hier hinterlegen (CONFIG.caseFilmUrl im Quelltext).'; }
+  if(typeof PROMPTS==='undefined'||!PROMPTS.length) return;
+  makeCarousel({
+    car:'pcarousel', track:'ptrack', dots:'pdots', count:'pcount', items:PROMPTS,
+    build:function(p,idx,n){
+      var slide=document.createElement('div'); slide.className='pslide';
+      slide.setAttribute('role','group'); slide.setAttribute('aria-label','Prompt '+(idx+1)+' von '+n);
+      var h=document.createElement('span'); h.className='ptheme'; h.textContent=(idx+1)+' \u00B7 '+p.theme; slide.appendChild(h);
+      function row(label,txt){ var r=document.createElement('div'); r.className='prow'; var l=document.createElement('span'); l.className='plabel'; l.textContent=label; var pp=document.createElement('p'); pp.textContent=txt; r.appendChild(l); r.appendChild(pp); return r; }
+      slide.appendChild(row('Midjourney',p.mj));
+      slide.appendChild(row('Runway',p.runway));
+      return slide;
+    }
+  });
+})();
+
+/* Einzelbilder je Abschnitt */
+(function(){
+  document.querySelectorAll('[data-fig]').forEach(function(fig){
+    var key=fig.getAttribute('data-fig');
+    var cfg=(CONFIG.figures&&CONFIG.figures[key])||{};
+    var box=fig.querySelector('.figph__ph'), cap=fig.querySelector('.figph__cap');
+    if(cfg.src){ var img=document.createElement('img'); img.src=cfg.src; img.alt=(cfg.caption||key); img.loading='lazy'; if(box) box.replaceWith(img); }
+    if(cap){
+      if(cfg.caption && cfg.caption.trim()){ cap.textContent=cfg.caption; }
+      else { cap.textContent='Satz zum Bild hier schreiben.'; cap.classList.add('is-placeholder'); }
+    }
+  });
 })();
 
 /* Hero Loop-Video: Badge ausblenden, sobald ein Video wirklich spielt */
