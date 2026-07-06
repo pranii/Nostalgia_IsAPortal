@@ -9,7 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-
+/* ============================================================
+   NOSTALGIA IS A PORTAL — process diary
+   Palette + type from the exhibition posters.
+   Editorial two-column scaffold: margin rail (number/label)
+   + reading column. Human memory = serif; machine = mono.
+   ============================================================ */
 :root{
   --void:#140811; --wine:#1e0d1a; --panel:#0a0709;
   --portal:#9fe7be; --portal-dim:#79c39c;
@@ -306,13 +311,11 @@ html.js .reveal.vis{opacity:1;transform:none}
       <p class="hero__credits">Julia Mamani &middot; Pranvera Pelaj &middot; Cara Br&uuml;ggendieck</p>
     </div>
 
-    <!-- LOOP-VIDEO: Datei nach  assets/video/hero-loop.mp4  legen.
-         Bis dahin zeigt das Titelplakat (poster) als Platzhalter. -->
+    <!-- LOOP-VIDEO: Videodatei in  assets/video/  legen und den Dateinamen oben
+         bei MEDIA.heroLoopVideo [V1] eintragen. Bis dahin zeigt das Titelplakat. -->
     <figure class="hero__media">
       <video class="hero__video" id="heroVideo" autoplay loop muted playsinline preload="metadata"
-             poster="assets/images/poster-hero.jpg">
-        <source src="assets/video/hero-loop.mp4" type="video/mp4">
-      </video>
+             poster="assets/images/poster-hero.jpg"></video>
       <span class="hero__badge" id="heroBadge">Loop-Video &middot; Platzhalter</span>
     </figure>
 
@@ -702,33 +705,41 @@ html.js .reveal.vis{opacity:1;transform:none}
 
 <script>
 /* ============================================================================
-   KONFIGURATION  —  Nur diesen Block bearbeiten.
+   HIER MEDIEN EINTRAGEN  —  nur diesen Block bearbeiten.
    ============================================================================
-   1) FOTOS (Bildstrecke): Bilddatei nach  assets/images/  legen und Pfad eintragen:
-      { src: "assets/images/foto-01.jpg", caption: "Aufbau in der Galerie" }
-      Leeres "src" = Platzhalter. 5–7 Bilder empfohlen.
-   2) EINZELBILDER (Themenfindung/Brainstorming/Zuspitzung/Kernkonzept):
-      pro Abschnitt Pfad eintragen und den Satz darunter bei "caption".
-   3) LOOP-VIDEO: Datei einfach als  assets/video/hero-loop.mp4  ablegen
-      (kein Eintrag nötig — wird automatisch abgespielt).
+   SO GEHT'S:
+   1) Dateien ablegen:  Bilder in  assets/images/   ·   Videos in  assets/video/
+   2) Unten beim passenden Eintrag NUR den Dateinamen eintragen — genau so,
+      wie die Datei heißt.   Beispiel:    file: "mein-foto.jpg"
+   3) "text" ist optional (Bildunterschrift). Leer lassen = kein Text.
+   Leere Einträge bleiben automatisch Platzhalter.
+   (Die Nummern in [ ] helfen nur beim Wiederfinden.)
    ========================================================================== */
-const CONFIG = {
-  // 1) Bildstrecke (unten): Pfad + optionale Bildunterschrift
-  photos: [
-    { src: "", caption: "" },   // Bild 1  ->  z. B. "assets/images/foto-01.jpg"
-    { src: "", caption: "" },   // Bild 2
-    { src: "", caption: "" },   // Bild 3
-    { src: "", caption: "" },   // Bild 4
-    { src: "", caption: "" },   // Bild 5
-    { src: "", caption: "" }    // Bild 6  (weitere Zeilen möglich – bis 7)
-  ],
-  // 2) Einzelbild + Satz je Abschnitt
-  figures: {
-    themenfindung: { src: "", caption: "" },
-    brainstorming: { src: "", caption: "" },
-    zuspitzung:    { src: "", caption: "" },
-    kernkonzept:   { src: "", caption: "" }
-  }
+const MEDIA = {
+
+  /* ---- VIDEO  (Datei in assets/video/) ---- */
+  heroLoopVideo: "",                          // [V1] Loop-Video ganz oben im Titel
+
+  /* ---- EINZELBILDER je Abschnitt  (Dateien in assets/images/) ---- */
+  bilder: {
+    themenfindung: { file: "BRAINSTORM.png", text: "lala" },    // [B1] Abschnitt 02 · Themenfindung
+    brainstorming: { file: "", text: "" },    // [B2] Abschnitt 03 · Brainstorming
+    zuspitzung:    { file: "", text: "" },     // [B3] Abschnitt 04 · Zuspitzung
+    kernkonzept:   { file: "", text: "" }      // [B4] Abschnitt 05 · Kernkonzept
+  },
+
+  /* ---- BILDSTRECKE, Abschnitt 12  (Dateien in assets/images/) · 5–7 Fotos ---- */
+  /* Leere Zeilen werden ignoriert, sobald mindestens ein Foto eingetragen ist. */
+  bildstrecke: [
+    { file: "", text: "" },   // [S1]
+    { file: "", text: "" },   // [S2]
+    { file: "", text: "" },   // [S3]
+    { file: "", text: "" },   // [S4]
+    { file: "", text: "" },   // [S5]
+    { file: "", text: "" },   // [S6]
+    { file: "", text: "" }    // [S7]
+  ]
+
 };
 
 /* Vorbereitete Prompts (Bildstrecke „von der KI-Idee zu Archive.org“) */
@@ -749,6 +760,16 @@ const PROMPTS = [
   { theme:"Staubsauger", mj:"close up of hands gripping a vintage vacuum cleaner handle, worn carpet, morning light through blinds, 1980s living room, super 8 film grain", runway:"Slow pull back, stripes of light and shadow from blinds" }
 ];
 /* ===================== ab hier nichts mehr ändern ========================== */
+
+/* Dateiname -> Pfad. Der Ordner wird automatisch ergänzt; komplette Pfade
+   oder URLs (mit "/" oder http) werden unverändert übernommen. */
+function mediaPath(folder, file){
+  if(!file) return "";
+  file=(""+file).trim();
+  if(!file) return "";
+  if(/^https?:\/\//i.test(file) || file.indexOf('/')!==-1) return file;
+  return folder + file;
+}
 
 /* Wiederverwendbares Karussell (Fotos + Prompts) */
 function makeCarousel(o){
@@ -783,18 +804,21 @@ function makeCarousel(o){
 
 /* Foto-Karussell (Bildstrecke) */
 (function(){
-  var photos=(CONFIG.photos&&CONFIG.photos.length)?CONFIG.photos:[{src:'',caption:''}];
+  var all=(MEDIA.bildstrecke||[]);
+  var filled=all.filter(function(x){return x && x.file && (""+x.file).trim();});
+  var items = filled.length ? filled : (all.length ? all : [{file:'',text:''}]);
   function pad(x){return String(x).length<2?('0'+x):(''+x);}
   makeCarousel({
-    car:'carousel', track:'track', dots:'dots', count:'count', items:photos,
+    car:'carousel', track:'track', dots:'dots', count:'count', items:items,
     build:function(s,idx,n){
       var slide=document.createElement('div'); slide.className='slide';
       slide.setAttribute('role','group'); slide.setAttribute('aria-label','Bild '+(idx+1)+' von '+n);
-      if(s.src){ var img=document.createElement('img'); img.src=s.src; img.alt=s.caption||('Projektfoto '+(idx+1)); img.loading='lazy'; slide.appendChild(img); }
+      var src=mediaPath('assets/images/', s.file);
+      if(src){ var img=document.createElement('img'); img.src=src; img.alt=s.text||('Projektfoto '+(idx+1)); img.loading='lazy'; slide.appendChild(img); }
       else { slide.classList.add('ph'); slide.innerHTML='<span class="phn">'+pad(idx+1)+'</span><span class="pht">Bild hier einf\u00FCgen</span>'; }
       return slide;
     },
-    oncap:function(s){ var cap=document.getElementById('cap'); if(cap) cap.textContent=(s.caption)||''; }
+    oncap:function(s){ var cap=document.getElementById('cap'); if(cap) cap.textContent=(s.text)||''; }
   });
 })();
 
@@ -819,19 +843,22 @@ function makeCarousel(o){
 (function(){
   document.querySelectorAll('[data-fig]').forEach(function(fig){
     var key=fig.getAttribute('data-fig');
-    var cfg=(CONFIG.figures&&CONFIG.figures[key])||{};
+    var cfg=(MEDIA.bilder&&MEDIA.bilder[key])||{};
     var box=fig.querySelector('.figph__ph'), cap=fig.querySelector('.figph__cap');
-    if(cfg.src){ var img=document.createElement('img'); img.src=cfg.src; img.alt=(cfg.caption||key); img.loading='lazy'; if(box) box.replaceWith(img); }
+    var src=mediaPath('assets/images/', cfg.file);
+    if(src){ var img=document.createElement('img'); img.src=src; img.alt=(cfg.text||key); img.loading='lazy'; if(box) box.replaceWith(img); }
     if(cap){
-      if(cfg.caption && cfg.caption.trim()){ cap.textContent=cfg.caption; }
+      if(cfg.text && cfg.text.trim()){ cap.textContent=cfg.text; }
       else { cap.textContent='Satz zum Bild hier schreiben.'; cap.classList.add('is-placeholder'); }
     }
   });
 })();
 
-/* Hero Loop-Video: Badge ausblenden, sobald ein Video wirklich spielt */
+/* Hero Loop-Video: Quelle aus MEDIA setzen, Badge ausblenden sobald es spielt */
 (function(){
   var v=document.getElementById('heroVideo'), b=document.getElementById('heroBadge'); if(!v) return;
+  var src=mediaPath('assets/video/', MEDIA.heroLoopVideo);
+  if(src){ v.src=src; v.load(); var pl=v.play(); if(pl&&pl.catch) pl.catch(function(){}); }
   function hide(){ if(b) b.style.display='none'; }
   v.addEventListener('playing',hide);
   v.addEventListener('loadeddata',function(){ if(v.videoWidth>0) hide(); });
